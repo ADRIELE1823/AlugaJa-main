@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Benefícios do AlugaJá</h1>
+    <div class="beneficios-list">
+      <div *ngFor="let beneficio of beneficios" class="beneficio-item">
+        <h2>{{ beneficio.titulo }}</h2>
+        <p>{{ beneficio.descricao }}</p>
+      </div>
+    </div>
+  </div>

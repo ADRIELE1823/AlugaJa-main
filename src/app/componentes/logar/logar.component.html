@@ -1,0 +1,52 @@
+<header class="header">
+   
+  <nav class="navbar">
+    <a href=""><b>AlugaJá</b></a>
+    <a href="/Logar">Logar</a>
+    <a href="/Chat/:id" routerLinkActive="active-link">Chat</a>
+    <a href="">Cadastro</a>
+  </nav>
+</header>
+<br> 
+<br>
+<br> 
+<br><br> 
+<br>
+<img src=".\src\assets\aluguel.png"  class="logo">
+<div class="login-container">
+  <h1>Fazer Login</h1>
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="usuario.email"
+        required
+        placeholder="Digite seu e-mail"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha:</label>
+      <input
+        type="password"
+        id="senha"
+        name="senha"
+        [(ngModel)]="usuario.senha"
+        required
+        placeholder="Digite sua senha"
+      />
+    </div>
+
+    <button type="submit" [disabled]="!loginForm.form.valid">Entrar</button>
+  </form>
+
+  <div class="links">
+    <a routerLink="/recuperar-senha">Esqueceu a senha?</a>
+    <a routerLink="/cadastrar">Não tem uma conta? Cadastre-se</a>
+  </div>
+</div>
+
+

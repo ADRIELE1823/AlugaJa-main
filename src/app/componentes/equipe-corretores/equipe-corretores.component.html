@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Nossa Equipe de Corretores</h1>
+    <div class="corretores-list">
+      <div *ngFor="let corretor of corretores" class="corretor-card">
+        <img [src]="corretor.foto" alt="{{ corretor.nome }}" class="corretor-foto">
+        <h2>{{ corretor.nome }}</h2>
+        <p class="cargo">{{ corretor.cargo }}</p>
+        <p class="descricao">{{ corretor.descricao }}</p>
+      </div>
+    </div>
+  </div>

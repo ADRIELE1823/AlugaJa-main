@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.catalogo-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4efe5fa;
+    justify-content: center; 
+    align-items: center;
+  }
+  
+  .catalogo-container h1 {
+    color: rgb(235, 155, 8);
+    margin-bottom: 20px;
+  }
+  .catalogo-container h2 {
+    color: rgb(127, 83, 2);
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  .catalogo-container {
+    padding: 20px;
+}
+
+.imoveis {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que as divs se ajustem se a tela for pequena */
+    justify-content: center; 
+}
+
+.imovel {
+    width: 200px; /* Define a largura do quadrado */
+    height: 200px; /* Define a altura do quadrado */
+    overflow: hidden; /* Garante que a imagem não saia do quadrado */
+    background-color: #fff6f6; /* Cor de fundo para ver a área do quadrado */
+    text-align: center; /* Centraliza o texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Adiciona um pequeno espaçamento dentro da div */
+    box-sizing: border-box; 
+    border-radius: 20px; /* Arredonda as bordas da div */
+    overflow: hidden;
+}
+
+.imovel:hover {
+    transform: scale(1.05); /* Aumenta a escala da div */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra ao redor da div */
+}
+
+.imovel-imagem {
+    width: 100%; /* Faz a imagem preencher toda a largura */
+    height: 100%; /* Faz a imagem preencher toda a altura */
+    object-fit: cover; /* Faz com que a imagem se ajuste e preencha sem distorcer */
+    margin: 20px auto 0;
+}
+
+.imovel-link {
+  text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.imovel-link p {
+  text-decoration: none; 
+  color: black;
+}
