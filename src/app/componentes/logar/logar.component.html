@@ -1,44 +1,19 @@
-<header class="header">
-   
-  <nav class="navbar">
-    <a href=""><b>AlugaJá</b></a>
-    <a href="/Logar">Logar</a>
-    <a href="/Cadastrar">Cadastro</a>
-    <a href="/Chat">Contato</a>
+<app-header />
 
-  </nav>
-</header>
-<br> 
-<br>
-<br> 
-<br>
-<br>
-<img src="../../../assets/aluguel .png"  class="logo">
+<img src="../../../assets/aluguel .png" class="logo">
 <div class="login-container">
   <h1>Fazer Login</h1>
   <form (ngSubmit)="onLogin()" #loginForm="ngForm">
     <div class="form-group">
       <label for="email">E-mail:</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        [(ngModel)]="usuario.email"
-        required
-        placeholder="Digite seu e-mail"
-      />
+      <input type="email" id="email" name="email" [(ngModel)]="localEmail" required
+        placeholder="Digite seu e-mail" />
     </div>
 
     <div class="form-group">
       <label for="senha">Senha:</label>
-      <input
-        type="password"
-        id="senha"
-        name="senha"
-        [(ngModel)]="usuario.senha"
-        required
-        placeholder="Digite sua senha"
-      />
+      <input type="password" id="senha" name="senha" [(ngModel)]="localSenha" required
+        placeholder="Digite sua senha" />
     </div>
 
     <button type="submit" [disabled]="!loginForm.form.valid">Entrar</button>
@@ -49,5 +24,3 @@
     <a href="/Cadastrar">Não tem uma conta? Cadastre-se</a>
   </div>
 </div>
-
-

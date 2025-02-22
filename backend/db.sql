@@ -1,7 +1,9 @@
+
+drop schema if exists alugaja;
 CREATE DATABASE if not exists alugaja;
 USE alugaja;
 
-CREATE TABLE clientes (
+CREATE TABLE if not exists clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -10,7 +12,7 @@ CREATE TABLE clientes (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE imoveis (
+CREATE TABLE  if not exists imoveis (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo ENUM('Casa', 'Apartamento', 'Kitnet', 'Sobrado') NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
@@ -21,11 +23,10 @@ CREATE TABLE imoveis (
     descricao TEXT,
     corretor_id INT NOT NULL,
     disponivel ENUM('Sim', 'Não') NOT NULL DEFAULT 'Sim',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (corretor_id) REFERENCES corretores(id) ON DELETE CASCADE
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE preferencias_clientes (
+CREATE TABLE if not exists preferencias_clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     tipo_imovel ENUM('Casa', 'Apartamento', 'Kitnet', 'Sobrado'),
@@ -37,14 +38,14 @@ CREATE TABLE preferencias_clientes (
     FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
 );
 
-CREATE TABLE contatos (
+CREATE TABLE if not exists contatos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tipo ENUM('Telefone', 'WhatsApp', 'Email') NOT NULL,
     valor VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE recuperacao_senha (
+CREATE TABLE if not exists recuperacao_senha (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     token VARCHAR(255) NOT NULL,
@@ -65,18 +66,6 @@ INSERT INTO clientes (nome, email, senha, telefone) VALUES
 ('Lucas Pereira', 'lucas.pereira@example.com', 'senha1121', '(91) 91111-0000'),
 ('Camila Rodrigues', 'camila.rodrigues@example.com', 'senha3141', '(12) 90000-9999');
 
-
-INSERT INTO imoveis (tipo, localizacao, quartos, banheiros, garagem, valor_aluguel, descricao, corretor_id, disponivel) VALUES
-('Casa', 'Rua A, 123 - Centro', 3, 2, 'Sim', 1500.00, 'Casa espaçosa com quintal.', 1, 'Sim'),
-('Apartamento', 'Av. B, 456 - Jardim', 2, 1, 'Não', 1200.00, 'Apartamento moderno.', 2, 'Sim'),
-('Kitnet', 'Rua C, 789 - Centro', 1, 1, 'Não', 800.00, 'Kitnet compacta.', 3, 'Sim'),
-('Sobrado', 'Rua D, 101 - Bairro Alto', 4, 3, 'Sim', 2000.00, 'Sobrado com varanda.', 1, 'Sim'),
-('Casa', 'Rua E, 202 - Periferia', 2, 1, 'Sim', 1000.00, 'Casa simples.', 2, 'Sim'),
-('Apartamento', 'Av. F, 303 - Centro', 3, 2, 'Sim', 1800.00, 'Apartamento com vista.', 3, 'Sim'),
-('Kitnet', 'Rua G, 404 - Centro', 1, 1, 'Não', 900.00, 'Kitnet mobiliada.', 1, 'Sim'),
-('Sobrado', 'Rua H, 505 - Jardim', 5, 4, 'Sim', 2500.00, 'Sobrado grande.', 2, 'Sim'),
-('Casa', 'Rua I, 606 - Bairro Novo', 4, 3, 'Sim', 2200.00, 'Casa com piscina.', 3, 'Sim'),
-('Apartamento', 'Av. J, 707 - Centro', 2, 1, 'Não', 1300.00, 'Apartamento compacto.', 1, 'Sim');
 
 INSERT INTO preferencias_clientes (cliente_id, tipo_imovel, localizacao, quartos_minimos, banheiros_minimos, valor_maximo, outras_preferencias) VALUES
 (1, 'Casa', 'Centro', 3, 2, 2000.00, 'Proximidade de escolas.'),
@@ -114,3 +103,15 @@ INSERT INTO recuperacao_senha (cliente_id, token, expiracao, usado) VALUES
 (8, 'token456789', '2023-12-08 12:00:00', 'Não'),
 (9, 'token012345', '2023-12-09 12:00:00', 'Sim'),
 (10, 'token678901', '2023-12-10 12:00:00', 'Não');
+
+INSERT INTO imoveis (tipo, localizacao, quartos, banheiros, garagem, valor_aluguel, descricao, corretor_id, disponivel) VALUES
+('Casa', 'Rua A, 123 - Centro', 3, 2, 'Sim', 1500.00, 'Casa espaçosa com quintal.', 1, 'Sim'),
+('Apartamento', 'Av. B, 456 - Jardim', 2, 1, 'Não', 1200.00, 'Apartamento moderno.', 2, 'Sim'),
+('Kitnet', 'Rua C, 789 - Centro', 1, 1, 'Não', 800.00, 'Kitnet compacta.', 3, 'Sim'),
+('Sobrado', 'Rua D, 101 - Bairro Alto', 4, 3, 'Sim', 2000.00, 'Sobrado com varanda.', 1, 'Sim'),
+('Casa', 'Rua E, 202 - Periferia', 2, 1, 'Sim', 1000.00, 'Casa simples.', 2, 'Sim'),
+('Apartamento', 'Av. F, 303 - Centro', 3, 2, 'Sim', 1800.00, 'Apartamento com vista.', 3, 'Sim'),
+('Kitnet', 'Rua G, 404 - Centro', 1, 1, 'Não', 900.00, 'Kitnet mobiliada.', 1, 'Sim'),
+('Sobrado', 'Rua H, 505 - Jardim', 5, 4, 'Sim', 2500.00, 'Sobrado grande.', 2, 'Sim'),
+('Casa', 'Rua I, 606 - Bairro Novo', 4, 3, 'Sim', 2200.00, 'Casa com piscina.', 3, 'Sim'),
+('Apartamento', 'Av. J, 707 - Centro', 2, 1, 'Não', 1300.00, 'Apartamento compacto.', 1, 'Sim');
