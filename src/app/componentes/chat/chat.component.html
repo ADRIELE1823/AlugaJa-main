@@ -1,14 +1,43 @@
-<div class="chat-container">
-    <h1>Chat com Corretores</h1>
-    <p>Entre em contato com nossos corretores:</p>
-  
-    <div class="corretores-list">
-      @for (corretor of corretores; track corretor.nome) {
-        <div class="corretor-card">
-          <h3>{{ corretor.nome }}</h3>
-          <p><strong>Telefone:</strong> {{ corretor.telefone }}</p>
-          <p><strong>E-mail:</strong> {{ corretor.email }}</p>
-        </div>
-      }
+<header class="header">
+  <nav class="navbar">
+    <a href=""><b>AlugaJá</b></a>
+    <a href="/Logar">Login</a>
+    <a href="/Cadastrar">Cadastro</a>
+    <a href="/Chat">Contato</a>
+
+  </nav>
+</header>
+
+<section class="main-container">
+  <div class="chat-container">
+    <!-- Título e Descrição -->
+    <h2>Contato</h2>
+    <p>
+      É um problema encontrar a casa dos sonhos? Precisa de ajuda para comprar sua primeira casa? Ou precisa de uma consultoria para investir em imóveis? Entre em contato conosco.
+    </p>
+
+    <!-- Informações de Contato -->
+    <div class="contact-info">
+      <!-- Telefone -->
+      <div class="contact-item">
+        <strong>Telefone:</strong>
+        <p>61-35852021</p>
+        <a href="tel:6135852021" class="btn">Ligue Agora</a>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="contact-item">
+        <strong>WhatsApp:</strong>
+        <p>61-35852021</p>
+        <a href="https://wa.me/556135852021" target="_blank" class="btn">Iniciar Chat</a>
+      </div>
+
+      <!-- E-mail -->
+      <div class="contact-item">
+        <strong>E-mail:</strong>
+        <p>corretorimobiliariaalugaja.com</p>
+        <a href="mailto:corretor@imobiliaria.com" class="btn">Enviar Mensagem</a>
+      </div>
     </div>
   </div>
+</section>

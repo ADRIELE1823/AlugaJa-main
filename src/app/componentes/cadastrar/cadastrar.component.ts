@@ -8,22 +8,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './cadastrar.component.html',
   styleUrl: './cadastrar.component.css'
 })
-export class CadastrarComponent {
+export class CadastroComponent {
   usuario = {
     nome: '',
+    telefone: '',
     email: '',
-    senha: ''
+    senha: '',
+    confirmarSenha: ''
   };
-
-  // Função para verificar se o formulário está válido
-  isFormValid(): boolean {
-    return this.usuario.nome.trim() !== '' &&
-           this.usuario.email.trim() !== '' &&
-           this.usuario.senha.trim() !== '';
-  }
-
+ 
   onCadastrar() {
-    alert(`Usuário cadastrado com sucesso:\n${JSON.stringify(this.usuario)}`);
-    // Aqui você pode chamar uma API para salvar o novo usuário
+    // Verifica se as senhas coincidem
+    if (this.usuario.senha !== this.usuario.confirmarSenha) {
+      alert('As senhas não coincidem!');
+      return;
+    }
+
+    // Aqui você pode enviar os dados para o backend ou realizar outra ação
+    console.log('Dados do usuário:', this.usuario);
+    alert('Cadastro realizado com sucesso!');
   }
 }

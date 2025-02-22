@@ -3,16 +3,17 @@
   <nav class="navbar">
     <a href=""><b>AlugaJá</b></a>
     <a href="/Logar">Logar</a>
-    <a href="/Chat/:id" routerLinkActive="active-link">Chat</a>
-    <a href="">Cadastro</a>
+    <a href="/Cadastrar">Cadastro</a>
+    <a href="/Chat">Contato</a>
+
   </nav>
 </header>
 <br> 
 <br>
 <br> 
-<br><br> 
 <br>
-<img src=".\src\assets\aluguel.png"  class="logo">
+<br>
+<img src="../../../assets/aluguel .png"  class="logo">
 <div class="login-container">
   <h1>Fazer Login</h1>
   <form (ngSubmit)="onLogin()" #loginForm="ngForm">
@@ -44,8 +45,8 @@
   </form>
 
   <div class="links">
-    <a routerLink="/recuperar-senha">Esqueceu a senha?</a>
-    <a routerLink="/cadastrar">Não tem uma conta? Cadastre-se</a>
+    <a href="/Recuperar-senha">Esqueceu a senha?</a>
+    <a href="/Cadastrar">Não tem uma conta? Cadastre-se</a>
   </div>
 </div>
 

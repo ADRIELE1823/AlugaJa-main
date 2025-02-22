@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Router } from '@angular/router';
 
 
 @Component({
@@ -13,34 +13,71 @@ import { provideRouter } from '@angular/router';
 })
 export class MainComponent {
   formulario: FormGroup;
-  router: any;
+  usuarioAutenticado: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.formulario = this.fb.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      telefone: ['', [Validators.required, Validators.pattern(/^\d{10,11}$/)]],
       tipoImovel: ['', Validators.required],
-      valorMaximo: ['', [Validators.required, Validators.min(500)]]
+      localizacao: ['', Validators.required],
+      quartos: [1, [Validators.required, Validators.min(1)]],
+      banheiros: [1, [Validators.required, Validators.min(1)]],
+      garagem: ['', Validators.required],
+      valorMaximo: [500, [Validators.required, Validators.min(500)]],
+      outrasPreferencias: ['']
     });
+
+    // Verifica se o usuário está autenticado
+    this.usuarioAutenticado = this.authService.isLoggedIn();
   }
 
-
   onSubmit() {
+    if (!this.usuarioAutenticado) {
+      alert('Você precisa estar logado para enviar suas preferências.');
+      this.router.navigate(['/login']);
+      return;
+    }
+
     if (this.formulario.valid) {
       const formData = this.formulario.value;
-      console.log('Formulário enviado:', formData);
-  
-      // Redireciona para a página de catálogo com os dados como queryParams
-      this.router.navigate(['/catalogo'], { queryParams: formData }).then((success: any) => {
-        if (success) {
-          console.log('Redirecionado para /catalogo');
-        } else {
-          console.error('Falha ao redirecionar para /catalogo');
-        }
-      });
+      console.log('Preferências enviadas:', formData);
+
+      // Simulação de envio para o backend ou outra ação
+      alert('Solicitação enviada com sucesso!');
     } else {
       console.error('Formulário inválido');
+      alert('Por favor, preencha todos os campos obrigatórios.');
     }
+  }
+}
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  private isAuthenticated: boolean = false;
+
+  constructor() {
+    // Simulação: Verifica se há um token no localStorage
+    this.isAuthenticated = !!localStorage.getItem('token');
+  }
+
+  login(token: string): void {
+    localStorage.setItem('token', token);
+    this.isAuthenticated = true;
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.isAuthenticated = false;
+  }
+
+  isLoggedIn(): boolean {
+    return this.isAuthenticated;
   }
 }
