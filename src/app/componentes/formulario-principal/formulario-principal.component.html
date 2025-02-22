@@ -1,0 +1,105 @@
+<section class="main-container">
+    <!-- Conteúdo Principal -->
+    <section class="cadastro">
+      <div class="cadastro-content">
+        <h1>Filtre suas Preferências</h1>
+        <p>Encontre o imóvel ideal para você!</p>
+      </div>
+    </section>
+  
+    <!-- Formulário de Filtragem -->
+    <section class="formulario-filtro">
+      <div class="formulario-container">
+        <h2>Filtrar Preferências</h2>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <!-- Tipo de Imóvel -->
+          <div class="form-group">
+            <label for="tipoImovel">Tipo de Imóvel:</label>
+            <select id="tipoImovel" formControlName="tipoImovel">
+              <option value="">Selecione...</option>
+              <option value="Casa">Casa</option>
+              <option value="Apartamento">Apartamento</option>
+              <option value="Kitnet">Kitnet</option>
+              <option value="Sobrado">Sobrado</option>
+            </select>
+            @if (formulario.get('tipoImovel')?.invalid && formulario.get('tipoImovel')?.touched) {
+              <div class="error-message">
+                <small>O tipo de imóvel é obrigatório.</small>
+              </div>
+            }
+          </div>
+  
+          <!-- Localização -->
+          <div class="form-group">
+            <label for="localizacao">Localização (Cidade/Bairro):</label>
+            <input id="localizacao" type="text" formControlName="localizacao">
+            @if (formulario.get('localizacao')?.invalid && formulario.get('localizacao')?.touched) {
+              <div class="error-message">
+                <small>A localização é obrigatória.</small>
+              </div>
+            }
+          </div>
+  
+          <!-- Número de Quartos -->
+          <div class="form-group">
+            <label for="quartos">Número de Quartos:</label>
+            <input id="quartos" type="number" formControlName="quartos">
+            @if (formulario.get('quartos')?.invalid && formulario.get('quartos')?.touched) {
+              <div class="error-message">
+                <small *ngIf="formulario.get('quartos')?.errors?.['required']">O número de quartos é obrigatório.</small>
+                <small *ngIf="formulario.get('quartos')?.errors?.['min']">Mínimo de 1 quarto.</small>
+              </div>
+            }
+          </div>
+  
+          <!-- Número de Banheiros -->
+          <div class="form-group">
+            <label for="banheiros">Número de Banheiros:</label>
+            <input id="banheiros" type="number" formControlName="banheiros">
+            @if (formulario.get('banheiros')?.invalid && formulario.get('banheiros')?.touched) {
+              <div class="error-message">
+                <small *ngIf="formulario.get('banheiros')?.errors?.['required']">O número de banheiros é obrigatório.</small>
+                <small *ngIf="formulario.get('banheiros')?.errors?.['min']">Mínimo de 1 banheiro.</small>
+              </div>
+            }
+          </div>
+  
+          <!-- Vagas na Garagem -->
+          <div class="form-group">
+            <label for="garagem">Vagas na Garagem:</label>
+            <select id="garagem" formControlName="garagem">
+              <option value="">Selecione...</option>
+              <option value="Sim">Sim</option>
+              <option value="Não">Não</option>
+            </select>
+            @if (formulario.get('garagem')?.invalid && formulario.get('garagem')?.touched) {
+              <div class="error-message">
+                <small>A escolha de vagas na garagem é obrigatória.</small>
+              </div>
+            }
+          </div>
+  
+          <!-- Valor Máximo do Aluguel -->
+          <div class="form-group">
+            <label for="valorMaximo">Valor Máximo do Aluguel (R$):</label>
+            <input id="valorMaximo" type="number" formControlName="valorMaximo">
+            @if (formulario.get('valorMaximo')?.invalid && formulario.get('valorMaximo')?.touched) {
+              <div class="error-message">
+                <small *ngIf="formulario.get('valorMaximo')?.errors?.['required']">O valor máximo é obrigatório.</small>
+                <small *ngIf="formulario.get('valorMaximo')?.errors?.['min']">O valor mínimo é R$ 500.</small>
+              </div>
+            }
+          </div>
+  
+          <!-- Outras Preferências -->
+          <div class="form-group">
+            <label for="outrasPreferencias">Outras Preferências:</label>
+            <textarea id="outrasPreferencias" formControlName="outrasPreferencias"></textarea>
+          </div>
+  
+          <!-- Botão de Envio -->
+          <button type="submit" [disabled]="formulario.invalid">Enviar Filtro</button>
+        </form>
+      </div>
+    </section>
+  </section>

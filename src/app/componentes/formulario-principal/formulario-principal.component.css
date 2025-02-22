@@ -1,0 +1,164 @@
+/* Importação da fonte */
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow: hidden;
+  color: rgb(2, 2, 2);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 10%;
+  display: flex;
+  background-color: #f4efe5fa;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  position: fixed;
+}
+
+
+
+.navbar a {
+  font-size: 18px;
+  color: rgb(255, 157, 0);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 35px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: rgb(68, 45, 3);
+}
+
+.cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  height: calc(100vh - 150px); 
+  background-size: cover;
+  background-position: center;
+}
+.cadastro-content {
+  display: flex;
+  align-items: center; /* Alinha verticalmente */
+  justify-content: center; /* Garante que tudo fique à esquerda */
+}
+
+.imagem-aluguel {
+  width: 200px; /* Aumente conforme necessário */
+  height: auto;
+  margin-left: -100px; /* Move a imagem ainda mais para a esquerda */
+}
+
+
+.cadastro-texto {
+  max-width: 00px; /* Limita a largura do texto para melhor layout */
+}
+
+
+.cadastro-content h1 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: rgb(255, 157, 0);
+}
+
+.cadastro-content p {
+  color: rgb(11, 2, 43);
+  font-size: 19px;
+  
+}
+
+/* Contêiner principal */
+.main-container {
+  display: flex; /* Ativa o layout flexível */
+  justify-content: space-between; /* Espaçamento entre os elementos */
+  align-items: flex-start; /* Alinha os elementos no topo */
+  padding: 150px 10% 20px; /* Espaçamento superior para evitar sobreposição com o navbar */
+  height: 100vh; /* Altura total da tela */
+}
+
+/* Estilo do formulário */
+.formulario-aluguel {
+  width: 400px; /* Largura fixa para o formulário */
+  padding: 20px;
+  background-color: #f4efe5fa;
+  border-radius: 8px;
+  margin-top: 20px; /* Adiciona margem superior para separar do navbar */
+}
+
+.formulario-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(255, 157, 0);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #7d5f05; /* Cor dos rótulos */
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #7d5f05; /* Cor do texto nos campos de entrada */
+}
+
+input:focus,
+select:focus {
+  border-color: #007bff; /* Destaque ao focar */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra suave ao focar */
+}
+
+.error-message {
+  color: #dc3545; /* Cor das mensagens de erro */
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color:rgb(255, 157, 0);
+  color: rgb(24, 21, 21); /* Cor do texto do botão */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button:disabled {
+  background-color: #eee4c7; 
+  cursor: not-allowed;
+}
+
